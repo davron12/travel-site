@@ -16,6 +16,8 @@ var config = {
   }
 };
 
+gulp.task( 'icons', [ 'beginClean', "createSprite", "copySpriteCSS", "copySpriteGraphic", 'endClean' ] );
+
 gulp.task( 'beginClean', function() {
   return del( [ './app/temp/sprite', './app/assets/images/sprites' ] );
 } );
@@ -23,8 +25,6 @@ gulp.task( 'beginClean', function() {
 gulp.task( 'endClean', [ 'copySpriteGraphic', 'copySpriteCSS' ], function() {
   return del( [ './app/temp/sprite' ] );
 } );
-
-gulp.task( 'icons', [ 'beginClean', "createSprite", "copySpriteCSS", "copySpriteGraphic", 'endClean' ] );
 
 gulp.task( 'createSprite', [ 'beginClean' ], function() {
   return gulp.src( './app/assets/images/icons/**/*.svg' )
